@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#7928CA', // Purple
+                        secondary: '#FF0080', // Pink
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+            .scroll-smooth {
+                scroll-behavior: smooth;
+            }
+            .text-gradient {
+                background-clip: text;
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+            }
+            .bg-blur {
+                backdrop-filter: blur(8px);
+                -webkit-backdrop-filter: blur(8px);
+            }
+            .typing {
+                border-right: 3px solid #7928CA;
+                white-space: nowrap;
+                overflow: hidden;
+                animation: blink 1s step-end infinite;
+            }
+            @keyframes blink {
+                from, to { border-color: transparent; }
+                50% { border-color: #7928CA; }
+            }
+            .chat-message {
+                animation: fadeIn 0.5s ease-in;
+            }
+            @keyframes fadeIn {
+                from { opacity: 0; transform: translateY(10px); }
+                to { opacity: 1; transform: translateY(0); }
+            }
+        }
+    </style>
+</head>
+<body id="body" class="text-gray-800 font-sans scroll-smooth" style="background: url('bg.jpg') no-repeat center center fixed; background-size: cover;">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full bg-white/80 bg-blur shadow-sm z-50">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="text-2xl font-bold bg-gradient-to-r from-primary to-secondary text-gradient">Portfolio</div>
+                
+                <div class="flex items-center gap-4">
+                    <!-- DARK MODE BUTTON -->
+                    <button id="darkModeToggle" onclick="toggleDarkMode()" class="text-2xl hover:text-primary transition-colors" title="Toggle Dark Mode">
+                        <i class="fa fa-moon-o"></i>
+                    </button>
+
+                    <div class="hidden md:flex space-x-8">
+                        <a href="#home" class="hover:text-primary transition-colors">Home</a>
+                        <a href="#about" class="hover:text-primary transition-colors">About</a>
+                        <a href="#projects" class="hover:text-primary transition-colors">My Projects</a>
+                        <a href="#certificates" class="hover:text-primary transition-colors">Certificate</a>
+                        <a href="#contact" class="hover:text-primary transition-colors">Contact</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- AI ASSISTANT SECTION -->
+    <section id="ai-assistant" class="pt-28 pb-8 px-4">
+        <div class="max-w-4xl mx-auto">
+            <div class="bg-black/80 text-green-400 p-4 rounded-lg font-mono text-sm shadow-2xl border border-green-500/30">
+                <div class="flex items-center gap-2 mb-2">
+                    <span class="text-xs">🌙</span>
+                    <span class="font-bold">Virtual Assistant</span>
+                </div>
+                
+                <!-- Chat Messages Area -->
+                <div id="chat-box" class="mb-4 h-24 overflow-y-auto">
+                    <p id="assistant-text" class="typing chat-message">Hello! I am Andrea's Assistant. Ask me anything!</p>
+                </div>
+
+                <!-- Input Area -->
+                <div class="flex gap-2">
+                    <input 
+                        type="text" 
+                        id="user-input" 
+                        placeholder="Type your question here..."
+                        class="flex-1 bg-gray-900 border border-green-500/30 rounded px-3 py-2 text-white focus:outline-none focus:border-primary"
+                        onkeypress="if(event.key === 'Enter') sendMessage()"
+                    >
+                    <button 
+                        onclick="sendMessage()"
+                        class="bg-primary hover:bg-opacity-80 text-white px-4 py-2 rounded transition-colors"
+                    >
+                        <i class="fa fa-paper-plane"></i> Send
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Hero Section -->
+    <section id="home" class="pt-10 pb-20 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
+        <div class="text-center">
+            
+            <!-- PROFILE PICTURE -->
+            <div class="mb-8 flex justify-center">
+                <div class="w-40 h-40 rounded-full overflow-hidden border-4 border-primary shadow-xl bg-white">
+                    <img src="c:\Users\Personal\Desktop\my github\profile.jpg" alt="Profile Picture" class="w-full h-full object-cover">
+                </div>
+            </div>
+
+            <h1 class="text-5xl md:text-6xl font-bold text-gray-900 mb-4">
+                Hi, I'm <span class="bg-gradient-to-r from-primary to-secondary text-gradient">Andrea Jean U. Occeña</span>
+            </h1>
+            <p class="text-xl text-gray-700 max-w-2xl mx-auto mb-8">
+                I'm an aspiring <span class="font-semibold">IT Student & Web Enthusiast</span>. I enjoy creating user-friendly and visually appealing web interfaces.
+            </p>
+            
+            <!-- BUTTONS -->
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="#contact" class="inline-block bg-gradient-to-r from-primary to-secondary text-white px-8 py-3 rounded-full font-medium hover:opacity-90 transition-opacity shadow-lg hover:shadow-xl transform hover:-translate-y-0.5">
+                    Get In Touch
+                </a>
+                <a href="c:\Users\Personal\Desktop\my github\resume.pdf" target="_blank" class="inline-block bg-white text-primary border-2 border-primary px-8 py-3 rounded-full font-medium hover:bg-purple-50 transition-colors shadow-lg hover:shadow-xl transform hover:-translate-y-0.5">
+                    <i class="fa fa-download"></i> Download Resume
+                </a>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-3xl font-bold text-center mb-12 text-gray-900">About Me</h2>
+            <div class="bg-white/80 bg-blur p-8 rounded-2xl shadow-sm">
+                <p class="text-gray-700 leading-relaxed mb-4">
+                    I am a dedicated Bachelor of Science in Information Technology student. 
+                    My journey is fueled by a deep commitment to mastering digital problem-solving. 
+                    I pride myself on being highly organized, detail-oriented, and constantly evolving with the latest technology trends.
+                </p>
+                <div class="mt-6">
+                    <h3 class="font-semibold text-lg mb-3">My Skills</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-purple-100 text-primary px-3 py-1 rounded-full text-sm font-medium">HTML</span>
+                        <span class="bg-purple-100 text-primary px-3 py-1 rounded-full text-sm font-medium">CSS</span>
+                        <span class="bg-purple-100 text-primary px-3 py-1 rounded-full text-sm font-medium">JavaScript</span>
+                        <span class="bg-purple-100 text-primary px-3 py-1 rounded-full text-sm font-medium">Canva</span>
+                        <span class="bg-purple-100 text-primary px-3 py-1 rounded-full text-sm font-medium">Photoshop</span>
+                        <span class="bg-purple-100 text-primary px-3 py-1 rounded-full text-sm font-medium">Encoding</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
+        <h2 class="text-3xl font-bold text-center mb-12 text-gray-900">My Projects</h2>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            
+            <!-- Project Card 1 -->
+            <div class="bg-white/80 bg-blur rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow">
+                <img src="c:\Users\Personal\Desktop\my github\Activity1.jpg" alt="Project 1" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-2">Chess Board</h3>
+                    <p class="text-gray-600 text-sm mb-4">Created using HTML and CSS to design a visual chess board layout.</p>
+                    <a href="#" class="text-primary font-medium hover:underline">View Project →</a>
+                </div>
+            </div>
+
+            <!-- Project Card 2 -->
+            <div class="bg-white/80 bg-blur rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow">
+                <img src="c:\Users\Personal\Desktop\my github\Activity 2.jpg" alt="Project 2" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-2">Product Design</h3>
+                    <p class="text-gray-600 text-sm mb-4">Designing attractive product layouts using graphic design tools.</p>
+                    <a href="#" class="text-primary font-medium hover:underline">View Project →</a>
+                </div>
+            </div>
+
+            <!-- Project Card 3 -->
+            <div class="bg-white/80 bg-blur rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow">
+                <img src="c:\Users\Personal\Desktop\my github\Activity 3.jpg" alt="Project 3" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-2">T-Shirt Layout</h3>
+                    <p class="text-gray-600 text-sm mb-4">Creative design and layout preparation for apparel printing.</p>
+                    <a href="#" class="text-primary font-medium hover:underline">View Project →</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!--              CERTIFICATES SECTION         -->
+    <!-- ========================================== -->
+    <section id="certificates" class="py-20 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
+        <h2 class="text-3xl font-bold text-center mb-12 text-gray-900">Certificates</h2>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            
+            <!-- Certificate Card 1 -->
+            <div class="bg-white/80 bg-blur rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow">
+                <img src="c:\Users\Personal\Desktop\my github\fundamentals.jpg" alt="Certificate" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-2">Fundamentals of Graphic Design</h3>
+                    <p class="text-gray-600 text-sm mb-4">Completed training on visual design principles.</p>
+                    <a href="fundamentals.jpg" target="_blank" class="text-primary font-medium hover:underline">View Certificate →</a>
+                </div>
+            </div>
+
+            <!-- Certificate Card 2 -->
+            <div class="bg-white/80 bg-blur rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow">
+                <img src="c:\Users\Personal\Desktop\my github\cisco.jpg" alt="Certificate" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-2">CISCO Networking Fundamentals</h3>
+                    <p class="text-gray-600 text-sm mb-4">Completed course on basic networking concepts.</p>
+                    <a href="cisco.jpg" target="_blank" class="text-primary font-medium hover:underline">View Certificate →</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-gray-900/80 text-white px-4 sm:px-6 lg:px-8">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-3xl font-bold mb-8">Contact Me</h2>
+            <p class="mb-8 text-gray-200">Interested in working together? Let's talk!</p>
+            
+            <div class="flex justify-center space-x-6 mb-8">
+                <a href="tel:09125913956" class="text-2xl hover:text-purple-400 transition-colors"><i class="fa fa-phone"></i> 09125913956</a>
+                <a href="https://facebook.com" target="_blank" class="text-2xl hover:text-purple-400 transition-colors"><i class="fa fa-facebook"></i> Andrea Jean Occeña</a>
+            </div>
+
+            <p class="text-sm text-gray-400">Email: andreaoccenal29@gmail.com</p>
+        </div>
+    </section>
+
+    <footer class="bg-gray-900 text-gray-600 text-center py-4 border-t border-gray-800">
+        <p>&copy; 2025 Andrea Jean U. Occeña. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // ===== DARK MODE FUNCTION =====
+        function toggleDarkMode() {
+            const body = document.body;
+            const button = document.getElementById('darkModeToggle');
+            const nav = document.querySelector('nav');
+            const cards = document.querySelectorAll('.bg-white\\/80');
+
+            body.classList.toggle('bg-gray-900');
+            body.classList.toggle('text-white');
+            
+            if(body.classList.contains('bg-gray-900')) {
+                // Dark Mode On
+                button.innerHTML = '<i class="fa fa-sun-o (☼)"></i>';
+                nav.classList.remove('bg-white/80');
+                nav.classList.add('bg-black/80');
+                
+                cards.forEach(card => {
+                    card.classList.remove('bg-white/80');
+                    card.classList.add('bg-gray-800/80');
+                });
+
+                // Change text colors for headings
+                document.querySelectorAll('.text-gray-900').forEach(el => {
+                    el.classList.add('text-white');
+                });
+                document.querySelectorAll('.text-gray-700').forEach(el => {
+                    el.classList.add('text-gray-300');
+                });
+
+            } else {
+                // Light Mode On
+                button.innerHTML = '<i class="fa fa-moon-o(🌙)"></i>';
+                nav.classList.remove('bg-black/80');
+                nav.classList.add('bg-white/80');
+
+                cards.forEach(card => {
+                    card.classList.remove('bg-gray-800/80');
+                    card.classList.add('bg-white/80');
+                });
+
+                document.querySelectorAll('.text-white').forEach(el => {
+                    if(!el.closest('footer') && !el.closest('#contact')) {
+                        el.classList.remove('text-white');
+                    }
+                });
+            }
+        }
+
+        // ===== CHATBOT SCRIPT =====
+        const chatBox = document.getElementById('chat-box');
+        const userInput = document.getElementById('user-input');
+
+        const responses = {
+            "who are you": "I am the Virtual Assistant of Andrea Jean U. Occeña!",
+            "what is your name": "You can call me Assistant Bot 🤖",
+            "how old are you": "Andrea was born on December 9, 2000.",
+            "where do you live": "Brgy. 7, Moises Padilla, Negros Occidental.",
+            "what are your skills": "Andrea knows HTML, CSS, JavaScript, Canva, Photoshop, and Encoding.",
+            "what is your course": "Bachelor of Science in Information Technology at Central Philippine State University.",
+            "contact number": "You can reach her at 09125913956.",
+            "email": "andreaoccenal29@gmail.com",
+            "work experience": "She worked as a Cashier at Food Basket Corporation (FBC) from 2022-2024.",
+            "hello": "Hello! How can I help you today? 😊",
+            "hi": "Hi there! 👋",
+            "thank you": "You're welcome! Happy to help! 😊",
+            "projects": "She made Chess Board, Product Design, and T-Shirt Layouts.",
+           "certificate": "She has certificates in Graphic Design and Cisco Networking."
+     };
+     function typeWriter(element, text, i = 0) {
+         if (i < text.length) {
+             element.innerHTML += text.charAt(i);
+             i++;
+             setTimeout(() => typeWriter(element, text, i), 30);
+         }
+     }
+     function sendMessage() {
+         const message = userInput.value.trim().toLowerCase();
+         if (message === '') return;
+         // Display User Message
+         const userMsg = document.createElement('p');
+         userMsg.innerHTML = <span class="text-white">You:</span> ${userInput.value};
+         userMsg.className = "chat-message mb-1";
+         chatBox.appendChild(userMsg);
+         userInput.value = '';
+         chatBox.scrollTop = chatBox.scrollHeight;
+         // Find Response
+         let reply = "I'm sorry, I don't understand that question yet. Try asking about her skills, education, or contact details!";
+         
+         for (let key in responses) {
+             if (message.includes(key)) {
+                 reply = responses[key];
+                 break;
+             }
+         }
+         // Display Bot Response
+         const botMsg = document.createElement('p');
+         botMsg.innerHTML = <span class="text-yellow-400">Bot:</span> ;
+         botMsg.className = "chat-message mb-2";
+         chatBox.appendChild(botMsg);
+         typeWriter(botMsg, reply);
+         chatBox.scrollTop = chatBox.scrollHeight;
+     }
+     // Initial typing effect
+     const initialText = "Hello! I am Andrea's Assistant. Ask me anything!";
+     let index = 0;
+     const element = document.getElementById('assistant-text');
+     
+     function typeInit() {
+         if (index < initialText.length) {
+             element.innerHTML = initialText.substring(0, index + 1);
+             index++;
+             setTimeout(typeInit, 30);
+         }
+     }
+     window.onload = typeInit;
+ </script>
